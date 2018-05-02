@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var CtrlMon = require('../controllers/monitoring');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', CtrlMon.getzabbix);
 
 module.exports = router;
