@@ -8,5 +8,11 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.getZabbix = function(req, res) {
-    sendJSONresponse(res, 200, {"status": "succsess"})
+
+    Mon.find().exec(function (err, zabbix) {
+        console.log("result: " + zabbix);
+        console.log("ошибка: " + err);
+        sendJSONresponse(res, 200, zabbix);
+    })
+
 };

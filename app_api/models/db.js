@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-var gracefulShutdown;
 var dbURI = 'mongodb://localhost/okoMon';
-
+var gracefulShutdown;
 mongoose.connect(dbURI);
 
 // CONNECTION EVENTS
@@ -42,4 +41,4 @@ process.on('SIGTERM', function() {
     });
 });
 
-require('./monitoringModel');
+require('./ModelZabbix');

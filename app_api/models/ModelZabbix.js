@@ -5,4 +5,4 @@ var monitoringSchema = new mongoose.Schema({
    phone: String
 });
 
-mongoose.model('Monitoring', monitoringSchema);
+mongoose.model('Monitoring', monitoringSchema, 'zabbix');
