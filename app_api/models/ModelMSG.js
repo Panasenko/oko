@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+//TODO: добавить проверку записи в БД, добавлене поддокументов и добавить индексацию по референсам
 var monitoringSchema = new mongoose.Schema({
     "corezoid_conv_id": String,
     "corezoid_refTask": String,
