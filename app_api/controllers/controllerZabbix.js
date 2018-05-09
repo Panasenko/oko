@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Mon = mongoose.model('Monitoring');
+var Mon = mongoose.model('zabbixMonitoring');
 
 
 var sendJSONresponse = function(res, status, content) {

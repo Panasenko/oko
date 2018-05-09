@@ -12,4 +12,4 @@ var monitoringSchema = new mongoose.Schema({
             "eventId": String
 });
 
-mongoose.model('Monitoring', monitoringSchema, 'zabbix');
+mongoose.model('zabbixMonitoring', monitoringSchema, 'zabbix');
