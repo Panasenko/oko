@@ -1,10 +1,12 @@
 var express = require('express');
-var rest = require('connect-rest');
 var router = express.Router();
 
 var CtrlMon = require('../controllers/controllerZabbix');
 var CtrlNag = require('../controllers/controllerNagios');
 var CtrlMSG = require('../controllers/controllerMSG');
+
+
+
 
 //TODO: добавить PUT и DELETE запросы с логикой обновления документов
 /* GET zabbix data. */

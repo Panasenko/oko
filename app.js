@@ -1,15 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
-var rest = require('connect-rest');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-require('./app_api/models/db')
-
-
+require('./app_api/models/db');
 var routes = require('./app_api/routes/index');
-
 
 var app = express();
 
