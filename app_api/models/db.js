@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var dbURI = 'mongodb://localhost/okoMon';
+var config = require('../../config/config');
 var gracefulShutdown;
-mongoose.connect(dbURI);
+mongoose.connect(config.dbURI);
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
-    console.log('Mongoose connected to ' + dbURI);
+    console.log('Mongoose connected to ' + config.dbURI);
 });
 mongoose.connection.on('error', function(err) {
     console.log('Mongoose connection error: ' + err);

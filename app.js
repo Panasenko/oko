@@ -7,6 +7,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 require('./app_api/models/db');
 var routes = require('./app_api/routes/index');
+var config = require('./config/config')
 
 var app = express();
 
@@ -20,19 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 
-/*
-app.use(vhost('api.oko.loc', function (req, res) {
-    console.log(req);
-    res.send('vhost');
-}));
-*/
-app.use(vhost('api.oko.loc', routes));
-
-
-
-//app.use('/api', routes);
-
-
+//Перенаправление на виртуальный хост
+app.use(vhost(config.vhost, routes));
 
 app.get('/', function (req, res) {
     res.send('USER');
