@@ -33,25 +33,42 @@ module.exports.setMSG = function(req, res) {
                 sendJSONresponse(res, 404, err);
                 return;
             }
+//TODO: расширить проверку соответствия
+            if (msg.MsgSt !== req.body.MsgSt) {
+                console.log("Выполнилось обновление");
 
-            console.log("Выполнилось обновление");
-            msg.Prior = req.body.Prior;
-            msg.MsgSt = req.body.MsgSt;
-            msg.AlertFin = req.body.AlertFin;
-            msg.AlertSt = req.body.AlertSt;
 
-            msg.save({
-                "AlertFin": req.body.AlertFin,
-                "AlertSt": req.body.AlertSt,
-                "MsgSt": req.body.MsgSt,
-                "Prior": req.body.Prior
-            }, function (err, msg){
-                if (err) {
-                    sendJSONresponse(res, 400, err);
-                } else {
-                    sendJSONresponse(res, 401, msg);
-                }
-            })
+
+                msg.Prior = req.body.Prior;
+                msg.MsgSt = req.body.MsgSt;
+                msg.AlertFin = req.body.AlertFin;
+                msg.AlertSt = req.body.AlertSt;
+
+                msg.history.push({
+                    "MsgSt": req.body.MsgSt,
+                    "MsgURL": req.body.MsgURL,
+                    "MsgId": req.body.MsgId,
+                    "MsgText": req.body.MsgText,
+                    "BusId": req.body.BusId,
+                    "BusIdInf": req.body.BusIdInf,
+                    "Prior": req.body.Prior
+                });
+
+                msg.save({
+                    "AlertFin": req.body.AlertFin,
+                    "AlertSt": req.body.AlertSt,
+                    "MsgSt": req.body.MsgSt,
+                    "Prior": req.body.Prior
+                }, function (err, msg) {
+                    if (err) {
+                        sendJSONresponse(res, 400, err);
+                    } else {
+                        sendJSONresponse(res, 201, msg);
+                    }
+                })
+            } else {
+                sendJSONresponse(res, 201, {"result" : "data not updated"});
+            }
         })
 };
 
@@ -68,12 +85,22 @@ var createMSG = function (req, res) {
         "MsgText": req.body.MsgText,
         "BusId": req.body.BusId,
         "BusIdInf": req.body.BusIdInf,
-        "Prior": req.body.Prior
+        "Prior": req.body.Prior,
+        "history": [{
+            "MsgSt": req.body.MsgSt,
+            "MsgURL": req.body.MsgURL,
+            "MsgId": req.body.MsgId,
+            "MsgText": req.body.MsgText,
+            "BusId": req.body.BusId,
+            "BusIdInf": req.body.BusIdInf,
+            "Prior": req.body.Prior
+        }]
     }, function (err, msg){
         if (err) {
             sendJSONresponse(res, 400, err);
         } else {
-            sendJSONresponse(res, 401, msg);
+            sendJSONresponse(res, 201, msg);
         }
     })
-}
+};
+
