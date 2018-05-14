@@ -19,9 +19,9 @@ router.get('/nagios', CtrlNag.getNagios);
 /* Post Nagios data. */
 router.post('/nagios', CtrlNag.setNagios);
 
-/* GET Nagios data. */
+/* GET MSG data. */
 router.get('/msg', CtrlMSG.getMSG);
-/* Post Nagios data. */
+/* Post MSG data. */
 router.post('/msg', CtrlMSG.setMSG);
 
 module.exports = router;

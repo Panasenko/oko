@@ -8,11 +8,12 @@ var monitoringSchema = new mongoose.Schema({
     "AlertSt": String,
     "MsgSt": String,
     "MsgURL": String,
-    "MsgId": String,
-    "MsgText": String,
-    "BusId": String,
-    "BusIdInf": String,
-    "Prior": String
+    "MsgId": {type: String, required: true},
+    "MsgText": {type: String, required: true},
+    "BusId": {type: String, required: true},
+    "BusIdInf": {type: String, required: true},
+    "Prior": {type: String, required: true},
+    "history": [S]
 });
 
 mongoose.model('MsgMonitoring', monitoringSchema, 'msg');
