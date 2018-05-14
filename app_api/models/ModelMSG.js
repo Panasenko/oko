@@ -13,7 +13,7 @@ var monitoringSchema = new mongoose.Schema({
     "BusId": {type: String, required: true},
     "BusIdInf": {type: String, required: true},
     "Prior": {type: String, required: true},
-    "history": [S]
+    "history": [String]
 });
 
 mongoose.model('MsgMonitoring', monitoringSchema, 'msg');
